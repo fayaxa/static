@@ -1,10 +1,11 @@
-pipline {
+pipeline {
   agent any
   stages {
     stage('Upload to AWS') {
       steps {
-        withAWS(region:'eu-east-1', credentials:'aws-static') {
-          s3Upload(file:'index.html', bucket:'udacityjenkinsnano', path:'index.html')        }
+        withAWS(credentials:'aws-static', region:'eu-east-1') {
+          s3Upload(file:'index.html', bucket:'udacityjenkinsnano', path:'index.html') 
+        }
       }
     }
   }
